@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
   <head>
-    <title>TravelApp</title>
+    <title>Travel</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,15 @@
   </head>
 
   <body>
+    <!-- 以下はdeviseのフラッシュメッセージ -->
+    <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p>
+    <header class="header-design">
+    
     <%= yield %>
+    
+    
+    
+    <footer>@ 2020 POTEPAN.INC.</footer>
   </body>
 </html>
