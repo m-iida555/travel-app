@@ -2,7 +2,7 @@
 
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
-  # before_action :configure_account_update_params, only: [:update]
+  #before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
    def new
@@ -15,19 +15,31 @@ class Users::RegistrationsController < Devise::RegistrationsController
    end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+     #super
+     @user=User.find(current_user.id)
+  end
 
   # PUT /resource
-  # def update
-  #   super
-  # end
+   def update
+     #super
+     @user=User.find(current_user.id)
+     if @user.update(params.require(:user).permit(:img, :name, :introduction))
+         flash[:notice]="更新が完了しました"
+         redirect_to edit_user_registration_path
+     else
+             render "edit"
+     end
+   end
 
   # DELETE /resource
   # def destroy
   #   super
   # end
+  
+  
+  
+
 
   # GET /resource/cancel
   # Forces the session data which is usually expired after sign
@@ -38,8 +50,20 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
-  # protected
+   protected
+   
 
+   def after_update_path_for(resource)
+       edit_user_registration_path
+   end
+   def after_sign_out_path_for(resource)
+       root_path
+   end
+
+   #def after_update_path_for(resource)
+       #edit_user_registration_path
+   #end
+   
   # If you have extra params to permit, append them to the sanitizer.
   # def configure_sign_up_params
   #   devise_parameter_sanitizer.permit(:sign_up, keys: [:attribute])

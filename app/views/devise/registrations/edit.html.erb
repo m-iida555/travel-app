@@ -7,7 +7,8 @@
 
 <div class="update-around">
     <div class="update">
-<%= form_for @user do |f| %>
+<%= form_with model: User.new, url: user_registration_path, id: 'new_user', class: 'new_user',method: :patch, local: true do |f| %>
+<%#= form_for(@user) do |f| %>
 <table>
     
 <tr class="profile-font width-contents">
@@ -17,8 +18,8 @@
 <tr class="profile-font width-contents">
 <th>
 <td>
-<% if @user.img? %>
-<%= image_tag @user.img.url,:class=>"profile-img" %>
+<% if current_user.img? %>
+<%= image_tag current_user.img.url,:class=>"profile-img" %>
   <% else %>
   <%= image_tag "/assets/default.jpeg", :size => '100x100',:class=>"profile-img" %>
 <% end %>
