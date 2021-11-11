@@ -6,6 +6,8 @@
 
 <div class="update">
 <div class="update-around">
+<%#= form_for @password do |f| %>
+<%#= form_with model: @password,url: edit_user_password_path,method: :put do |f| %>  <%# formはデフォルトがpostなのでcreateに向けて出ないと記述できない %>
 <table>
     <tr>
     <th class="account-font">アカウント</th>
@@ -20,7 +22,7 @@
 
     <tr>
     <th class="account-font">パスワード</th>
-    <td class="account-font"><%= @password.encrypted_password %></td>
+    <td class="account-font"><%= @password.password %></td>
     </tr>
     
     <tr>
@@ -28,6 +30,7 @@
     </tr>
     
 </table>
+<%# end %>
 </div>
 </div>
 </div>

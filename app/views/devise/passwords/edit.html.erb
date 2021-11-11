@@ -1,25 +1,39 @@
-<h2>Change your password</h2>
+<div class="clearfix">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, "New password" %><br />
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "Confirm new password" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Change my password" %>
-  </div>
+<div class="update edit-position">
+<div class="update-around">
+  <%= render"shared/error",obj:@password %>
+<%= form_with model: @password,url: user_password_path,method: :put do |f| %>
+<h4 class="account-font">アカウント編集</h4>
+<table>
+    <tr>
+    <th><%= f.label :email , "メールアドレス", :class=>"account-font" %></th>
+    <td class="box-position"><%= f.text_field :email , :class=>"password-box" %></td>
+    </tr>
+    
+    <tr>
+    <th><%= f.label :encrypted_password ,"変更後のパスワード",  :class=>"account-font"  %></th>
+    <td class="box-position"><%= f.text_field :encrypted_password, :class=>"password-box" %></td>
+    </tr>
+    
+    <tr>
+    <th><%= f.label :password_confirmation ,"パスワード確認用", :class=>"account-font"  %></th>
+    <td class="box-position"><%= f.password_field :password_confirmation,:class=>"password-box" %></td>
+    </tr>
+    
+  　 <tr>
+    <th><%= f.label :current_password ,"現在のパスワード", :class=>"account-font"  %></th>
+    <td class="box-position"><%= f.password_field :current_password, :class=>"password-box" %></td>
+    </tr>
+  </table>
+  <ul>
+    <li><%= f.submit "更新",:class=>"blue-button" %></li>
+    <li><%= link_to "戻る", new_user_password_path,:class=>"edit-link button-space" %></li>
+  </ul>
+     <%= f.hidden_field :reset_password_token %>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
+</div>
+</div>

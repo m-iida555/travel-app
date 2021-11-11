@@ -11,13 +11,13 @@
   <ul>
     <li class="hissu-logo"><%= f.text_field :name, placeholder:"ユーザー名",:class=>"profile-box" %></li>
     <li class="hissu-logo"><%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" ,:class=>"profile-box"%></li>
-    <li class="hissu-logo"><%= f.password_field :password, placeholder: "パスワード",:class=>"profile-box" %></li>
+    <li class="hissu-logo"><%= f.password_field :encrypted_password, placeholder: "パスワード",:class=>"profile-box" %></li>
     <li class="hissu-logo"><%= f.password_field :password_confirmation, placeholder: "パスワード確認用",:class=>"profile-box" %></li>
   </ul>
   
 <ul>
 <li><%= f.submit "新しいアカウントを作成" ,:class=>"blue-button"%></li>
-<li><%= link_to"既にアカウントをお持ちの方はログイン",:users,:class=>"new-link" %></li>
+<li><%= link_to"既にアカウントをお持ちの方はログイン",new_user_session_path,:class=>"new-link" %></li>
 </ul>
 <% end %>
 </div>
