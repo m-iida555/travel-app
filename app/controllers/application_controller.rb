@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
     
     protect_from_forgery with: :exception
-    #before_action :authenticate_user! ,except: [:top]#を通して、ログイン画面に遷移する場合、ログイン後、ログイン直前の画面に戻します。
+    before_action :authenticate_user!, except: [:top]
     before_action :configure_permitted_parameters, if: :devise_controller?
     
     #def after_sign_in_path_for(resource)

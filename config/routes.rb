@@ -19,6 +19,10 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, :only => [:show]
   resources :rooms
-  resources :reservations
-  
+  resources :reservations do
+      member do
+      get 'new_reserve'
+      post 'confirm' #new_reserveからform_withでデータが来るのでpost,またストロングパラメータを利用するのでhttpからidをひっぱるのでmember
+    end
+  end
 end

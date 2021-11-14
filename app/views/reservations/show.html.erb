@@ -1,0 +1,35 @@
+<div class="around-line">
+  <div class="inline">
+   <table>
+    <tr>
+      <th>
+        予約した部屋
+      </th>
+      <td>
+        <%= @reservation.roomname %>
+      </td>
+    </tr>
+    <th>
+        開始日
+    </th>
+    <td>
+        <%= @reservation.start %>
+    </td>
+    </tr>
+  　<th>
+        終了日
+    </th>
+    <td>
+        <%= @reservation.end %>
+    </td>
+    </tr>
+    <th>
+        価格
+    </th>
+    <td>
+        <%= @reservation.total_money %>
+    </td>
+    </tr>
+   </table>
+  </div>
+</div>

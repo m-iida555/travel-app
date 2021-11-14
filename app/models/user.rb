@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   #has_secure_password
   mount_uploader :img, AvatarUploader
+  
+  has_many :rooms
+  has_many :reservations
 end

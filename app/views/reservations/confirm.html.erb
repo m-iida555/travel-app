@@ -1,0 +1,51 @@
+  <div class="around-line">
+    <table>
+      <tr>
+        <td>予約内容確認</td>
+        <td><p>¥</p><%= @reservation.money %><p>/日</p></td>
+        </tr>
+        <tr>
+        <th>開始日</th>
+        <td><%= @reservation.start %></td>
+        </tr>
+        <tr>
+        <th>終了日</th>
+        <td><%= @reservation.end %></td>
+        </tr>
+        <tr>
+        <td><p>使用日数:</p><%= @term %><p>日</p></td>
+        </tr>
+        <tr>
+        <td><p>人数:</p><%= @reservation.persons %><p>人</p></td>
+        </tr>
+        <tr>
+        <th>合計金額</th>
+        <td><%= @total_money %></td>
+        </tr>
+        <th>上記内容でよろしければ「予約確定」を押してください</th>
+        
+    </table>
+    
+    <div class="button-area">
+      <ul>
+        <%= form_with model: @reservation,url: reservation_path do |f| %>
+          <%= f.hidden_field :money %>
+          <%= f.hidden_field :start %>
+          <%= f.hidden_field :end %>
+          <%= f.hidden_field :term %>
+          <%= f.hidden_field :persons %>
+          <%= f.hidden_field :total_money %>
+        <li><%= f.submit "予約を確定", :class=>"blue-button" %></li>
+        <% end %>
+        <%= form_with model: @reservation do |f| %>
+          <%= f.hidden_field :money %>
+          <%= f.hidden_field :start %>
+          <%= f.hidden_field :end %>
+          <%= f.hidden_field :term %>
+          <%= f.hidden_field :persons %>
+          <%= f.hidden_field :total_money %>
+        <li><%= f.submit "ルーム詳細に戻る",name: 'back', :class=>"blue-button" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>

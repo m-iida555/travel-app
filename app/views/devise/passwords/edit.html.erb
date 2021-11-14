@@ -5,7 +5,7 @@
 <div class="update edit-position">
 <div class="update-around">
   <%= render"shared/error",obj:@password %>
-<%= form_with model: @password,url: user_password_path,method: :put do |f| %>
+<%= form_with model: @password,url: user_password_path,method: :patch do |f| %>
 <h4 class="account-font">アカウント編集</h4>
 <table>
     <tr>
