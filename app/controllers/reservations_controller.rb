@@ -19,16 +19,22 @@ class ReservationsController < ApplicationController
     end
     
     def create
+     #@reservation.room_id=room.id
      @reservation=Reservation.new(permit_params)
-     @reservation.room_id=room.id
-     if params[:back] || !@reservation.save
-      render new_reserve_path and return
-     redirect_to reservations_complete_path
+     if
+      @reservation.save
+      flash[:notice]="予約完了しました"
+      redirect_to reservation_path(@reservation.id)
+      else
+      redirect_to new_reserve_reservation_path
      end
+     #redirect_to new_reserve_path and return if params[:back] || !@reservation.save
+     #redirect_to reservation_path
+     
     end
     
     def show #部屋の最終確認
-      @reservation=Reservation.where(id: params[:id])
+      @reservation=Reservation.find(params[:id])
     end
     def edit
     end

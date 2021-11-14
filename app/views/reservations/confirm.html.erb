@@ -28,24 +28,19 @@
     
     <div class="button-area">
       <ul>
-        <%= form_with model: @reservation,url: reservation_path do |f| %>
+        <%= form_with model: @reservation,url: reservations_path do |f| %>
           <%= f.hidden_field :money %>
           <%= f.hidden_field :start %>
           <%= f.hidden_field :end %>
           <%= f.hidden_field :term %>
           <%= f.hidden_field :persons %>
           <%= f.hidden_field :total_money %>
+          <%= f.hidden_field :user_id %>
+          <%= f.hidden_field :room_id %>
         <li><%= f.submit "予約を確定", :class=>"blue-button" %></li>
         <% end %>
-        <%= form_with model: @reservation do |f| %>
-          <%= f.hidden_field :money %>
-          <%= f.hidden_field :start %>
-          <%= f.hidden_field :end %>
-          <%= f.hidden_field :term %>
-          <%= f.hidden_field :persons %>
-          <%= f.hidden_field :total_money %>
-        <li><%= f.submit "ルーム詳細に戻る",name: 'back', :class=>"blue-button" %></li>
-        <% end %>
+        <li><%= link_to "ルーム詳細に戻る",new_reserve_reservation_path %></li>
+        <%# end %>
       </ul>
     </div>
   </div>

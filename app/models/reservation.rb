@@ -2,6 +2,13 @@ class Reservation < ApplicationRecord
     belongs_to :user,optional:true
     belongs_to :room,optional:true
     
+    validates :total_money, numericality: true,presence: true
+    validates :term, numericality: true,presence: true
+    validates :start, presence: true
+    validates :end, presence: true
+
+
+    
 #以下はconfirmアクション内に対するインスタンスメソッド
     def term
         self.term=self.end.to_i - self.start.to_i

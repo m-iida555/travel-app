@@ -4,6 +4,7 @@ class Room < ApplicationRecord
     
     mount_uploader :roompic, RoompicUploader
     
+    validates :persons, numericality: true,presence: true
     validates :money, numericality: true,presence: true
     validates :roompic, presence: true
     validates :roomname, presence: true
