@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get 'rooms/index'
   get '/search', to: 'searchs#search'
   get 'searchs/nothing'
+  get 'top/tokyo'
+  get 'top/kyoto'
+  get 'top/oosaka'
+  get 'top/sapporo'
   
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :users, :only => [:show]

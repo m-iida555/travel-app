@@ -60,3 +60,5 @@ gem 'devise'
 gem 'pry-rails'
 
 gem 'carrierwave'
+
+gem 'rails-i18n'

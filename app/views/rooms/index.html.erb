@@ -13,14 +13,15 @@
     <th class="rooms-font">作成日</th>
   </tr>
   </thead>
+  <br>
  <tbody>
  <% @rooms.each do |room| %>
   <tr>
-    <td><%= room.roompic %></td>
+    <td><%= image_tag room.roompic.url,:class=>"img-size" %></td>
     <td><%= link_to room.roomname, new_reserve_reservation_path(room.id) %></td> <!-- link_toのパスがshowの時、controllerのshowアクションでparamsからidを拾っていれば、link_toでid指定はいらない。roomだけ　<%#=link_to "編集する",edit_blog_path(blog.id) %>）-->
     <td><%= room.roominfo %></td>
     <td><%= room.money %></td>
-    <td><%= room.created_at%></td>
+    <td><%= room.created_at.to_s(:datetime_jp)%></td>
   </tr>
   <br>
   <% end %>
