@@ -37,6 +37,10 @@
           <%= f.hidden_field :total_money %>
           <%= f.hidden_field :user_id %>
           <%= f.hidden_field :room_id %>
+          <%= f.hidden_field :roomname %>
+          <%= f.hidden_field :roominfo %>
+          <%= f.hidden_field :roompic %>
+
         <li><%= f.submit "予約を確定", :class=>"blue-button" %></li>
         <% end %>
         <li><%= link_to "ルーム詳細に戻る",new_reserve_reservation_path %></li>

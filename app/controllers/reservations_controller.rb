@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
   def index
+      @reservations=current_user.reservations
+      
   end
 
     def new_reserve
@@ -49,7 +51,8 @@ class ReservationsController < ApplicationController
     private
     
     def permit_params
-        @attr=params.require(:reservation).permit(:id,:start, :end, :term, :persons, :total_money, :user_id, :room_id, :roomname, :money)#確認画面に引数を渡すためにidも必要
+        @attr=params.require(:reservation).permit(:id,:start, :end, :term, :persons, :total_money, :user_id, :room_id, :roomname, :money,:roompic,:roominfo)#確認画面に引数を渡すためにidも必要
     end
+    
 
 end

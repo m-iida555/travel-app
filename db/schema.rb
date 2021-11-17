@@ -10,14 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_094629) do
+ActiveRecord::Schema.define(version: 2021_11_16_074503) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "installs", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "reservations", force: :cascade do |t|
-    t.integer "start"
-    t.integer "end"
     t.integer "persons"
     t.integer "room_id"
     t.integer "user_id"
@@ -28,6 +36,10 @@ ActiveRecord::Schema.define(version: 2021_11_12_094629) do
     t.integer "money"
     t.integer "term"
     t.string "roomname"
+    t.string "roominfo"
+    t.text "roompic"
+    t.date "start"
+    t.date "end"
   end
 
   create_table "rooms", force: :cascade do |t|
