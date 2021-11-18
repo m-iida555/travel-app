@@ -1,0 +1,54 @@
+<div class="around-line">
+  <div class="inline">
+  <div class="left-reserve">
+    <div class="room-img">
+      <% if @room.roompic? %>
+      <%= image_tag @room.roompic.url %>
+      <% end %>
+    </div>
+    <div class="user-icon">
+      <% if current_user.img? %>
+      <%= image_tag current_user.img.url %>
+      <% else %>
+      <%= image_tag "/assets/default.jpeg", :size => '100x100',:class=>"profile-img" %>
+      <% end %>
+    </div>
+    <div class="room-area">
+    <div class="name-width">
+      <%= @room.roomname %>
+    </div>
+    <div class="name-width">
+      <%= @room.area %>
+    </div>
+    </div>
+    <hr>
+    <div class="intro-width">
+      <%= @room.roominfo %>
+    </div>
+  </div>
+  
+  <div class="right-reserve">
+    <ul>
+      <% @money.each do |money| %>
+        <li><p>¥</p><%= money.money %><p>/日</p></li>
+      <% end %>
+      <%= form_with model: @reservation, url: {action: 'confirm'}, local: true do |f| %>
+        <li><%= f.label :start,"開始日",:class=>"date-box" %></li>
+        <li><%= f.date_field :start,use_month_numbers: true,:class=>"date-box" %></li>
+        <li><%= f.label :end,"終了日",:class=>"date-size" %></li>
+        <li><%= f.date_field :end,use_month_numbers: true,:class=>"date-box" %></li>
+        <li><%= f.label :persons,"人数",:class=>"date-box" %></li>
+        <li><%= f.text_field :persons,:class=>"date-box" %></li>
+        <li><%= f.submit "予約する",:class=>"button-box" %></li>
+      
+      <%= f.hidden_field :roomname, value: @room.roomname %>
+      <%= f.hidden_field :roominfo, value: @room.roominfo %>
+      <%= f.hidden_field :money, value: @room.money %>
+      <%= f.hidden_field :roompic, value: @room.roompic %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <%= f.hidden_field :user_id, value: @room.user_id %>
+    <% end %>  
+    </ul>
+  </div>
+  </div>
+</div>

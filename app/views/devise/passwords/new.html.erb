@@ -1,0 +1,33 @@
+
+<div class="clearfix">
+<div class="side-option">
+    <%= render"shared/accountprofile" %>
+</div>
+
+<div class="update">
+<div class="update-around">
+<table>
+    <tr>
+    <th class="account-font">アカウント</th>
+    </tr>
+  
+
+    <tr>
+    <th class="account-font">メールアドレス</th>
+    <td class="account-font"><%= current_user.email %></td>
+    </tr>
+
+
+    <tr>
+    <th class="account-font">パスワード</th>
+    <td class="account-font"><%= current_user.encrypted_password %></td>
+    </tr>
+    
+    <!--tr>
+      <td><%#= link_to "編集", edit_user_password_url(@resource, reset_password_token: @token), :class=>"edit-button" %></td>
+    </tr-->
+    
+</table>
+</div>
+</div>
+</div>

@@ -1,0 +1,34 @@
+
+<div class="around-line">
+  <div class="room-index">
+    <h3>登録済みルーム一覧</h3>
+
+  
+  <thead>
+  <tr>
+    <th class="rooms-font">ルーム画像</th>
+    <th class="rooms-font">ルーム名</th>
+    <th class="rooms-font">ルーム紹介</th>
+    <th class="rooms-font">住所</th>
+    <th class="rooms-font">料金</th>
+    <th class="rooms-font">作成日</th>
+  </tr>
+  </thead>
+  <br>
+ <tbody>
+ <% @sapporo.each do |room| %>
+  <tr>
+    <td><%= image_tag room.roompic.url,:class=>"img-size" %></td>
+    <td><%= link_to room.roomname, new_reserve_reservation_path(room.id) %></td>
+    <td><%= room.roominfo %></td>
+    <td><%= room.area %></td>
+    <td><%= room.money %></td>
+    <td><%= room.created_at.to_s(:datetime_jp)%></td>
+  </tr>
+  <br>
+  <% end %>
+  </tbody>
+  
+
+  </div>
+</div>
